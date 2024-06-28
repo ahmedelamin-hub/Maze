@@ -10,6 +10,7 @@ Enemies: Enemies are placed in the maze.
 Weapon: The player has a weapon to interact with the game.
 Minimap: A toggleable minimap is displayed.
 Rain Effect: Toggleable rain effect.
+
 Controls
 Move Forward: W
 Move Backward: S
@@ -25,3 +26,16 @@ GCC (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4
 SDL2
 SDL2_image
 SDL2_ttf
+Installation
+Clone the repository:
+
+bash
+git clone <git clone git@github.com:ahmedelamin-hub/Maze.git>
+
+Compilation
+$ gcc -Wall -Werror -Wextra -pedantic ./src/*.c -lm -o maze `sdl2-config --cflags` `sdl2-config --libs`;
+
+Usage
+cd mazegame
+make
+make run
