@@ -1,85 +1,39 @@
-#include "player.h"
-#include "map.h"
+#include "maze.h"
+#include "globals.h"
+
+Player player = {128, 128, 0};
 
 /**
- * initialize_player - Initialize the player's position and direction
- * @player: Pointer to the player structure
+ * isWall - Checks if a position is a wall
+ * @x: The x coordinate
+ * @y: The y coordinate
+ * Return: 1 if it is a wall, 0 otherwise
  */
-void initialize_player(Player *player)
+int isWall(float x, float y)
 {
-	player->posX = 22.0;
-	player->posY = 12.0;
-	player->dirX = -1.0;
-	player->dirY = 0.0;
-	player->planeX = 0.0;
-	player->planeY = 0.66;
+	int mapX = (int)(x / TILE_SIZE);
+	int mapY = (int)(y / TILE_SIZE);
+	return (map[mapX][mapY] == 1);
 }
 
 /**
- * move_player - Move the player based on input
- * @player: Pointer to the player structure
- * @keystate: Array of key states
+ * movePlayer - Moves the player by the specified amounts
+ * @moveX: The amount to move on the x axis
+ * @moveY: The amount to move on the y axis
  */
-void move_player(Player *player, const Uint8 *keystate)
+void movePlayer(float moveX, float moveY)
 {
-	double moveSpeed = 0.05;
-	double rotSpeed = 0.03;
-
-	if (keystate[SDL_SCANCODE_W])
+	if (moveX != 0)
 	{
-		if (world_map[(int)(player->posX + player->dirX * moveSpeed)]
-			[(int)(player->posY)] == 0)
-		{
-			player->posX += player->dirX * moveSpeed;
-		}
-		if (world_map[(int)(player->posX)]
-			[(int)(player->posY + player->dirY * moveSpeed)] == 0)
-		{
-			player->posY += player->dirY * moveSpeed;
-		}
+		float newX = player.x + moveX;
+		if (!isWall(newX, player.y))
+			player.x = newX;
 	}
 
-	if (keystate[SDL_SCANCODE_S])
+	if (moveY != 0)
 	{
-		if (world_map[(int)(player->posX - player->dirX * moveSpeed)]
-			[(int)(player->posY)] == 0)
-		{
-			player->posX -= player->dirX * moveSpeed;
-		}
-		if (world_map[(int)(player->posX)]
-			[(int)(player->posY - player->dirY * moveSpeed)] == 0)
-		{
-			player->posY -= player->dirY * moveSpeed;
-		}
-	}
-
-	if (keystate[SDL_SCANCODE_D])
-	{
-		double oldDirX = player->dirX;
-		player->dirX = player->dirX * cos(-rotSpeed)
-					   - player->dirY * sin(-rotSpeed);
-		player->dirY = oldDirX * sin(-rotSpeed)
-					   + player->dirY * cos(-rotSpeed);
-
-		double oldPlaneX = player->planeX;
-		player->planeX = player->planeX * cos(-rotSpeed)
-						 - player->planeY * sin(-rotSpeed);
-		player->planeY = oldPlaneX * sin(-rotSpeed)
-						 + player->planeY * cos(-rotSpeed);
-	}
-
-	if (keystate[SDL_SCANCODE_A])
-	{
-		double oldDirX = player->dirX;
-		player->dirX = player->dirX * cos(rotSpeed)
-					   - player->dirY * sin(rotSpeed);
-		player->dirY = oldDirX * sin(rotSpeed)
-					   + player->dirY * cos(rotSpeed);
-
-		double oldPlaneX = player->planeX;
-		player->planeX = player->planeX * cos(rotSpeed)
-						 - player->planeY * sin(rotSpeed);
-		player->planeY = oldPlaneX * sin(rotSpeed)
-						 + player->planeY * cos(rotSpeed);
+		float newY = player.y + moveY;
+		if (!isWall(player.x, newY))
+			player.y = newY;
 	}
 }

@@ -1,49 +1,41 @@
-MazeGame
-MazeGame is a 3D maze game inspired by Wolfenstein 3D. The game involves navigating through a maze, avoiding enemies, and finding your way to the exit.
+# SDL2 Maze Game
 
-# The Maze
+This is a 3D maze game inspired by Wolfenstein 3D, developed using SDL2 and raycasting. The player can navigate through the maze, avoid enemies, and find their way out.
 
-MazeGame is a 3D maze game inspired by Wolfenstein 3D. The game involves navigating through a maze, avoiding enemies, and finding your way to the exit.
+## Features
 
-Features
-3D Rendering with Raycasting: The game uses raycasting to render a 3D view of the maze.
-Player Movement: Move through the maze using the keyboard.
-Collision Detection: The player cannot pass through walls.
-Textures: Textures are applied to walls, floors, and ceilings.
-Enemies: Enemies are placed in the maze.
-Weapon: The player has a weapon to interact with the game.
-Minimap: A toggleable minimap is displayed.
-Rain Effect: Toggleable rain effect.
+- **3D Maze Rendering**: Uses raycasting to render a 3D view of the maze.
+- **Player Movement**: Move forward, backward, left, and right within the maze.
+- **Enemies**: Avoid enemies marked as blue dots on the minimap.
+- **Minimap**: Shows an overhead view of the maze, including walls, enemies, and the player's position and orientation.
+- **Weather Effects**: Toggle rain effects on or off.
+- **Weapon Rendering**: Weapon appears in the player's hand and moves with the player.
 
-### About SDL2 
+## Controls
 
-Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. It is used by video playback software, emulators, and popular games including Valve's award winning catalog and many Humble Bundle games.
+- **W**: Move forward
+- **S**: Move backward
+- **A**: Strafe left
+- **D**: Strafe right
+- **Left Arrow**: Rotate view left
+- **Right Arrow**: Rotate view right
+- **M**: Toggle minimap
+- **F**: Toggle rain effect
 
-## Installation 
+## Installation
+
+### Prerequisites
+
+- Ubuntu 14.04 LTS
+- GCC (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4
+- SDL2
+- SDL2_image
+
+### Clone the Repository
+
 ```sh
-$ git clone git@github.com:ahmedelamin-hub/Maze.git
+git clone https://github.com/ahmedelamin-hub/maze_game.git
+cd maze_game
+make 
+./maze_game map.txt
 
-```
-## Usage 
-* Execute ./maze or type make run 
-Controls
-Move Forward: W
-Move Backward: S
-Move Left: A
-Move Right: D
-Rotate Left: Left Arrow
-Rotate Right: Right Arrow
-Toggle Minimap: M
-Toggle Rain: R
-
-## Compilation
-```sh
-$ gcc -Wall -Werror -Wextra -pedantic ./src/*.c -lm -o maze `sdl2-config --cflags` `sdl2-config --libs`;
-```
-
-## Flowchart
-![The Maze Flow Chart](https://i.imgur.com/t0MxNni.png)
-
-## Author :black_nib:
-
-- **AhmedElamin** <(https://github.com/ahmedelamin-hub)>

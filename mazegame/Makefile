@@ -1,31 +1,24 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic
-LDFLAGS = -lSDL2 -lSDL2_image -lm
-
+CFLAGS = -Wall -Werror -Wextra -pedantic -Iinc
 SRC_DIR = src
-OBJ_DIR = obj
 INC_DIR = inc
-ASSETS_DIR = assets
+OBJ_DIR = obj
+SRC = $(SRC_DIR)/main.c $(SRC_DIR)/globals.c $(SRC_DIR)/input.c $(SRC_DIR)/player.c $(SRC_DIR)/raycasting.c $(SRC_DIR)/map.c $(SRC_DIR)/textures.c $(SRC_DIR)/render.c
+OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
+EXEC = maze_game
 
-SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
-OBJ_FILES = $(SRC_FILES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-TARGET = mazegame
+.PHONY: all clean
 
-all: $(TARGET)
+all: $(EXEC)
 
-$(TARGET): $(OBJ_FILES)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+$(EXEC): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ -lSDL2 -lSDL2_image -lm
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
-
-run: $(TARGET)
-	./run.sh
-
-.PHONY: all clean run
+	rm -rf $(OBJ_DIR) $(EXEC)
