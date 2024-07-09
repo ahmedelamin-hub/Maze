@@ -1,15 +1,17 @@
-SDL2 Maze Game
+# SDL2 Maze Game
 
 This is a 3D maze game inspired by Wolfenstein 3D, developed using SDL2 and raycasting. Navigate through the maze, avoid enemies, and find your way out.
 
-Features
+# Features
+
 3D Maze Rendering: Uses raycasting to render a 3D view of the maze.
 Player Movement: Move forward, backward, left, and right within the maze.
 Enemies: Avoid enemies marked as blue dots on the minimap.
 Minimap: Shows an overhead view of the maze, including walls, enemies, and the player's position and orientation.
 Weather Effects: Toggle rain effects on or off.
 Weapon Rendering: Weapon appears in the player's hand and moves with the player.
-Controls
+
+# Controls
 W: Move forward
 S: Move backward
 A: Strafe left
@@ -18,36 +20,36 @@ Left Arrow: Rotate view left
 Right Arrow: Rotate view right
 M: Toggle minimap
 F: Toggle rain effect
-Installation
-Prerequisites
+
+# Installation
+
+# Prerequisites
 Ubuntu 14.04 LTS
 GCC (Ubuntu 4.8.4-2ubuntu1~14.04) 4.8.4
 SDL2
 SDL2_image
-Usage
-sh
 
-# Clone the repo
-git clone https://github.com/ahmedelamin-hub/maze_game.git
-cd maze_game
-
-# Build the project
+# Usage
+Sh
+Clone the repo: git clone https://github.com/ahmedelamin-hub/maze_game.git
+cd mazegame
 make
+Run the game: ./maze_game map.txt
 
-# Run the game
-./maze_game map.txt
-Contribution
+# Contribution
 This project was done solo by me, Ahmed Elamin. Resources I consulted included the SDL2 tutorial and a raycasting tutorial.
 
-Related Projects
+# Related Projects
 Inspired by the classic game Wolfenstein 3D.
 
-Licensing
-This project is licensed under the MIT License. Feel free to use and modify it.
+# Licensing
+This project is not licenced and free to use. Feel free to use and modify it.
 
-Technical Details
-Ray Casting Algorithm
-Goal: To render a 3D perspective from a 2D map.
+# Technical Details
+
+### Ray Casting Algorithm
+
+## Goal: To render a 3D perspective from a 2D map.
 Implementation: For each vertical strip on the screen, a ray is cast from the player's position, incrementally checking for wall collisions. The distance to the nearest wall is used to determine the height of the wall slice to render, creating the illusion of depth.
 Challenges: Ensuring the rays were properly normalized within a 360-degree field and correcting the fish-eye effect by adjusting the ray distance based on the angle difference.
 
@@ -71,13 +73,19 @@ Goal: To place and render enemies within the maze, making them appear when the p
 Implementation: Enemies were rendered as textures at the player's position when their grid coordinates matched.
 Challenges: Synchronizing enemy positions with the player’s view and ensuring that multiple enemies could be displayed correctly.
 
-Inspiration for the Project
+# Screenshot of game
+
+![Screenshot 2024-07-02 185604](https://github.com/ahmedelamin-hub/Maze/assets/57487409/5611322c-feef-4414-aec2-1e0bc14a2ab6)
+
+# Inspiration for the Project
 The inspiration for creating this maze game came from my long-standing fascination with classic 2D games and a desire to understand how they operate under the hood. Growing up playing games like "Pac-Man" and "The Legend of Zelda," I was always intrigued by how simple mechanics could create such engaging gameplay. I wanted to replicate that sense of wonder and challenge myself to build a game from scratch, using modern tools and techniques. This project became an opportunity to blend my love for nostalgia with my technical skills, pushing me to explore deeper into game development.
 
-Links to the Project
-Blog: 3D Maze Game Using SDL2
-Google Slides: Project Presentation
-Landing Page: Elmostafa Games
-YouTube: Game Demo
-Next Steps
-This project, while not the most technically impressive application a recruiter or hiring manager might see, represents a significant learning journey for me. It showcases my ability to tackle complex problems, iterate on solutions, and continually improve. More importantly, it reflects my passion for game development and my determination to create engaging and enjoyable experiences.
+# Links to the Project
+### Blog: 3D Maze Game Using SDL2 https://www.linkedin.com/pulse/3d-maze-game-using-sdl2-ahmed-elmo-m16gf 
+### Google Slides: Project Presentation https://docs.google.com/presentation/d/1hvErAti2fktH0lRGng8uFnDH4PmBEHCCFtz6mhK53Mw/edit?usp=sharing
+### Landing Page: https://ahmedelamin42.wixsite.com/elmostafa-games
+### YouTube: Game Demo https://youtu.be/QjujI_GHAww
+
+# Next Steps
+This project, while not the most technically impressive application a recruiter or hiring manager might see, 
+represents a significant learning journey for me. It showcases my ability to tackle complex problems, iterate on solutions, and continually improve. More importantly, it reflects my passion for game development and my determination to create engaging and enjoyable experiences.
