@@ -1,8 +1,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include "maze.h"
-#include "globals.h"  /* Include this header to resolve global variable issues */
-#include "render.h"   /* Include render.h for render functions */
+#include "globals.h"
+#include "render.h"
 
 /**
  * main - Entry point of the program
@@ -11,22 +11,23 @@
  * Return: EXIT_SUCCESS or EXIT_FAILURE
  */
 int main(int argc, char *argv[])
-{
-	SDL_Window *window;
-	SDL_Renderer *renderer;
-	SDL_Event e;
-	const Uint8 *state;
-	int quit = 0;
+{	
+
+	SDL_Window *window; /* Pointer to the SDL window */
+	SDL_Renderer *renderer; /* Pointer to the SDL renderer */
+	SDL_Event e; /* SDL event structure for handling events */
+	const Uint8 *state; /* Pointer to the current state of the keyboard */
+	int quit = 0; /* Flag to control the main loop */
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: %s <map file>\n", argv[0]);
+		fprintf(stderr, "Usage: %s <map file>\n", argv[0]); /* Print usage message */
 		return (EXIT_FAILURE);
 	}
 
 	loadMap("assets/textures/map.txt");
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO) < 0) /* Initialize SDL video subsystem */
 	{
 		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 		return (EXIT_FAILURE);
@@ -87,7 +88,7 @@ int main(int argc, char *argv[])
 
 		handleInput(state);
 
-		SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
+		SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF); /* Set the render draw color to black */
 		SDL_RenderClear(renderer);
 
 		renderScene(renderer);

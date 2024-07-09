@@ -7,15 +7,15 @@ int map[MAP_WIDTH][MAP_HEIGHT];
  * loadMap - Loads the map from a file
  * @filename: The name of the file to load the map from
  */
-void loadMap(const char *filename)
+void loadMap(const char *filename) /* Declare the map array with dimensions MAP_WIDTH x MAP_HEIGHT */
 {
-	FILE *file = fopen(filename, "r");
-	int i, j;
-	char tile;
+	FILE *file = fopen(filename, "r"); /* Open the map file in read mode */
+	int i, j; /* Loop counters for map coordinates */
+	char tile; /* Variable to store each tile read from the file */
 
 	if (file == NULL)
 	{
-		perror("Failed to open map file");
+		perror("Failed to open map file"); /* Check if the file failed to open */
 		exit(EXIT_FAILURE);
 	}
 
@@ -37,15 +37,15 @@ void loadMap(const char *filename)
  */
 void drawMinimap(SDL_Renderer *renderer)
 {
-	int i, j;
-	SDL_Rect rect, enemyRect, playerRect;
-	int lineX, lineY;
+	int i, j; /* Loop counters for map coordinates */
+	SDL_Rect rect, enemyRect, playerRect; /* Rectangles for drawing the map, enemies, and player */
+	int lineX, lineY; /* Coordinates for the player's direction line */
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-	for (i = 0; i < MAP_HEIGHT; i++)
+	for (i = 0; i < MAP_HEIGHT; i++) /* Loop through each row of the map */
 	{
-		for (j = 0; j < MAP_WIDTH; j++)
+		for (j = 0; j < MAP_WIDTH; j++) /* Loop through each column of the map */
 		{
 			if (map[j][i] == 1)
 			{

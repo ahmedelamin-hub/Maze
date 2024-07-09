@@ -5,7 +5,8 @@
  * handleKeyDown - Handles key down events
  * @key: The key that was pressed
  */
-void handleKeyDown(SDL_Keycode key)
+
+void handleKeyDown(SDL_Keycode key)/* Checks which key was pressed */
 {
 	switch (key)
 	{
@@ -29,7 +30,11 @@ void handleInput(const Uint8 *state)
 	float moveStep = 0;
 	float moveX = 0;
 	float moveY = 0;
-
+	
+	/* If the 'm' key was pressed */
+	/* Toggle the showMap variable */
+	/* If the 'f' key was pressed */
+	/* Toggle the isRaining variable */
 	if (state[SDL_SCANCODE_W])
 		moveStep = MOVE_SPEED;
 	else if (state[SDL_SCANCODE_S])

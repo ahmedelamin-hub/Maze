@@ -7,15 +7,19 @@
  */
 void renderScene(SDL_Renderer *renderer)
 {
+	/* Calculate the starting angle of the first ray */
 	float rayAngle = player.angle - (FOV / 2.0) * (PI / 180.0);
 	float rayStep = FOV / (float)NUM_RAYS * (PI / 180.0);
 
+	/* Define the rectangle for the ceiling and floor */
 	SDL_Rect ceilingRect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 2};
 	SDL_Rect floorRect = {0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2};
-
+	
+	/* Define the rectangle for the ceiling and floor*/
 	SDL_RenderCopy(renderer, ceilingTexture, NULL, &ceilingRect);
 	SDL_RenderCopy(renderer, floorTexture, NULL, &floorRect);
 
+	/* Loop through each ray */
 	for (int i = 0; i < NUM_RAYS; i++)
 	{
 		if (rayAngle < 0)
@@ -28,6 +32,7 @@ void renderScene(SDL_Renderer *renderer)
 		float eyeX = cos(rayAngle);
 		float eyeY = sin(rayAngle);
 
+		/* Loop until a wall is hit or the ray reaches the maximum distance */
 		while (!hitWall && distanceToWall < SCREEN_WIDTH)
 		{
 			distanceToWall += 0.1;
@@ -45,6 +50,7 @@ void renderScene(SDL_Renderer *renderer)
 			}
 		}
 
+		 /* Correct the distance to the wall to avoid fish-eye effect */
 		float correctedDistance = distanceToWall * cos(rayAngle - player.angle);
 		int wallHeight = (int)(SCREEN_HEIGHT / correctedDistance * 2.0);
 		int ceiling = (SCREEN_HEIGHT / 2) - (wallHeight / 2);
