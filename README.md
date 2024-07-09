@@ -1,4 +1,5 @@
 SDL2 Maze Game
+
 This is a 3D maze game inspired by Wolfenstein 3D, developed using SDL2 and raycasting. Navigate through the maze, avoid enemies, and find your way out.
 
 Features
@@ -25,7 +26,7 @@ SDL2
 SDL2_image
 Usage
 sh
-نسخ الكود
+
 # Clone the repo
 git clone https://github.com/ahmedelamin-hub/maze_game.git
 cd maze_game
