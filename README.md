@@ -12,14 +12,14 @@ Weather Effects: Toggle rain effects on or off.
 Weapon Rendering: Weapon appears in the player's hand and moves with the player.
 
 # Controls
-W: Move forward
-S: Move backward
-A: Strafe left
-D: Strafe right
-Left Arrow: Rotate view left
-Right Arrow: Rotate view right
-M: Toggle minimap
-F: Toggle rain effect
+### W: Move forward
+### S: Move backward
+### A: Strafe left
+### D: Strafe right
+### Left Arrow: Rotate view left
+### Right Arrow: Rotate view right
+### M: Toggle minimap
+### F: Toggle rain effect
 
 # Installation
 
@@ -30,11 +30,11 @@ SDL2
 SDL2_image
 
 # Usage
-Sh
-Clone the repo: git clone https://github.com/ahmedelamin-hub/maze_game.git
-cd mazegame
-make
-Run the game: ./maze_game map.txt
+### Sh
+### Clone the repo: git clone https://github.com/ahmedelamin-hub/maze_game.git
+### cd mazegame
+### make
+### Run the game: ./maze_game map.txt
 
 # Contribution
 This project was done solo by me, Ahmed Elamin. Resources I consulted included the SDL2 tutorial and a raycasting tutorial.
