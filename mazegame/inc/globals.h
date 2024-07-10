@@ -1,6 +1,8 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+/* function protototypes */
+
 extern int showMap;
 extern int isRaining;
 extern int enemyVisible;
